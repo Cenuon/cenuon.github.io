@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#Mac下安装MNMP(Nginx+PHP7)环境 ###安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 ###安装PHP7.1（FPM方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/15517578100200/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#Mac下安装MNMP(Nginx+PHP7)环境 ###安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 ###安装PHP7.1（FPM方">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-05T03:54:16.881Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#Mac下安装MNMP(Nginx+PHP7)环境 ###安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 ###安装PHP7.1（FPM方">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head></html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-15517578100200" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+    <div class="article-meta">
+      <a href="/2019/03/05/15517578100200/" class="article-date">
+  <time datetime="2019-03-05T03:50:10.020Z" itemprop="datePublished">2019-03-05</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#Mac下安装MNMP(Nginx+PHP7)环境</p>
+<p>###安装Homebrew<br>打开终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>之后就可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ****</span><br></pre></td></tr></table></figure></p>
+<p>来安装所需要的依赖了。</p>
+<p>###安装PHP7.1（FPM方式）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install php@7.1</span><br></pre></td></tr></table></figure>
+<p>由于OSX已经自带了PHP环境，因此需要修改系统路径，优先运行brew安装的版本，在<code>~/.bashrc</code>里加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;/usr/local/bin:/usr/local/sbin:$PATH&quot;</span><br></pre></td></tr></table></figure>
+<p>###PHP-FPM的加载与启动<br>安装完毕后可以通过以下指令启动和停止php-fpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php-fpm -D</span><br><span class="line">killall php-fpm</span><br></pre></td></tr></table></figure>
+<p>###安装Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></p>
+<p>安装完毕后可以通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br><span class="line">nginx -s quit</span><br></pre></td></tr></table></figure>
+<p>启动和关闭，同时也支持重载配置文件等操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload|reopen|stop|quit</span><br></pre></td></tr></table></figure>
+<p>此时启动了php-fpm并且启动了Nginx后，就可以通过<a href="http://localhost来运行php程序了" target="_blank" rel="noopener">http://localhost来运行php程序了</a></p>
+<p>###安装扩展<br>使用pecl的方式安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install redis</span><br><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install mongodb</span><br><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install memcahced</span><br></pre></td></tr></table></figure>
+<p>安装好后直接使用，不需要配置php.ini文件（已经自动配置好了^_^）。</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/05/15517580662720/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/05/15517573025065/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/cenuon" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2019 John Doe 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank">Jane</a>
+	</div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/cenuon" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

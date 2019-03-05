@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Mysql 分页查询获取总数SQL_CALC_FOUND_ROWS通常mysql获取查询记录总数我们使用如下语句： 12$count = &amp;quot;SELECT COUNT(*) FROM users WHERE k=v&amp;quot;;$data = &amp;quot;SELECT id FROM goods WHERE k=v LIMIT 10&amp;quot;; 但是记录总数总是需要单独的语句来查询，例如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/15517580662720/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Mysql 分页查询获取总数SQL_CALC_FOUND_ROWS通常mysql获取查询记录总数我们使用如下语句： 12$count = &amp;quot;SELECT COUNT(*) FROM users WHERE k=v&amp;quot;;$data = &amp;quot;SELECT id FROM goods WHERE k=v LIMIT 10&amp;quot;; 但是记录总数总是需要单独的语句来查询，例如">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-05T03:55:26.212Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Mysql 分页查询获取总数SQL_CALC_FOUND_ROWS通常mysql获取查询记录总数我们使用如下语句： 12$count = &amp;quot;SELECT COUNT(*) FROM users WHERE k=v&amp;quot;;$data = &amp;quot;SELECT id FROM goods WHERE k=v LIMIT 10&amp;quot;; 但是记录总数总是需要单独的语句来查询，例如">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head></html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-15517580662720" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+    <div class="article-meta">
+      <a href="/2019/03/05/15517580662720/" class="article-date">
+  <time datetime="2019-03-05T03:54:26.272Z" itemprop="datePublished">2019-03-05</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mysql-分页查询获取总数SQL-CALC-FOUND-ROWS"><a href="#Mysql-分页查询获取总数SQL-CALC-FOUND-ROWS" class="headerlink" title="Mysql 分页查询获取总数SQL_CALC_FOUND_ROWS"></a>Mysql 分页查询获取总数SQL_CALC_FOUND_ROWS</h1><p>通常mysql获取查询记录总数我们使用如下语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$count = &quot;SELECT COUNT(*) FROM users WHERE k=v&quot;;</span><br><span class="line">$data = &quot;SELECT id FROM goods WHERE k=v LIMIT 10&quot;;</span><br></pre></td></tr></table></figure>
+<p>但是记录总数总是需要单独的语句来查询，例如在分页查询程序中就有这样的问题，其实mysql可以在一次查询中获取记录和总数的，这就是要使用SQL_CALC_FOUND_ROWS参数，使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$data = &quot;SELECT SQL_CALC_FOUND_ROWS goods WHERE k=v LIMIT 10&quot;;</span><br><span class="line">$count = &quot;SELECT FOUND_ROWS()&quot;;</span><br><span class="line">$total = $count[&apos;total&apos;];</span><br></pre></td></tr></table></figure>
+<p>这虽然是两个sql语句，但是确是查询一次数据库，效率明显提高了一半！其中SQL_CALC_FOUND_ROWS 告诉Mysql将sql所处理的行数记录下来，FOUND_ROWS() 则取到了这个纪录。</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/05/15517581488352/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/05/15517578100200/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/cenuon" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2019 John Doe 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank">Jane</a>
+	</div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/cenuon" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

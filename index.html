@@ -29,6 +29,181 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-15517581488352" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+    <div class="article-meta">
+      <a href="/2019/03/05/15517581488352/" class="article-date">
+  <time datetime="2019-03-05T03:55:48.835Z" itemprop="datePublished">2019-03-05</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="phpRedisAdmin的安装"><a href="#phpRedisAdmin的安装" class="headerlink" title="phpRedisAdmin的安装"></a>phpRedisAdmin的安装</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ErikDubbel...</span><br><span class="line">cd phpRedisAdmin</span><br><span class="line">git clone https://github.com/nrk/predis... vendor</span><br><span class="line">cp includes/config.sample.inc.php includes/config.inc.php</span><br></pre></td></tr></table></figure>
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-15517580662720" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+    <div class="article-meta">
+      <a href="/2019/03/05/15517580662720/" class="article-date">
+  <time datetime="2019-03-05T03:54:26.272Z" itemprop="datePublished">2019-03-05</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mysql-分页查询获取总数SQL-CALC-FOUND-ROWS"><a href="#Mysql-分页查询获取总数SQL-CALC-FOUND-ROWS" class="headerlink" title="Mysql 分页查询获取总数SQL_CALC_FOUND_ROWS"></a>Mysql 分页查询获取总数SQL_CALC_FOUND_ROWS</h1><p>通常mysql获取查询记录总数我们使用如下语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$count = &quot;SELECT COUNT(*) FROM users WHERE k=v&quot;;</span><br><span class="line">$data = &quot;SELECT id FROM goods WHERE k=v LIMIT 10&quot;;</span><br></pre></td></tr></table></figure>
+<p>但是记录总数总是需要单独的语句来查询，例如在分页查询程序中就有这样的问题，其实mysql可以在一次查询中获取记录和总数的，这就是要使用SQL_CALC_FOUND_ROWS参数，使用方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$data = &quot;SELECT SQL_CALC_FOUND_ROWS goods WHERE k=v LIMIT 10&quot;;</span><br><span class="line">$count = &quot;SELECT FOUND_ROWS()&quot;;</span><br><span class="line">$total = $count[&apos;total&apos;];</span><br></pre></td></tr></table></figure>
+<p>这虽然是两个sql语句，但是确是查询一次数据库，效率明显提高了一半！其中SQL_CALC_FOUND_ROWS 告诉Mysql将sql所处理的行数记录下来，FOUND_ROWS() 则取到了这个纪录。</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-15517578100200" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+    <div class="article-meta">
+      <a href="/2019/03/05/15517578100200/" class="article-date">
+  <time datetime="2019-03-05T03:50:10.020Z" itemprop="datePublished">2019-03-05</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#Mac下安装MNMP(Nginx+PHP7)环境</p>
+<p>###安装Homebrew<br>打开终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>之后就可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ****</span><br></pre></td></tr></table></figure></p>
+<p>来安装所需要的依赖了。</p>
+<p>###安装PHP7.1（FPM方式）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install php@7.1</span><br></pre></td></tr></table></figure>
+<p>由于OSX已经自带了PHP环境，因此需要修改系统路径，优先运行brew安装的版本，在<code>~/.bashrc</code>里加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;/usr/local/bin:/usr/local/sbin:$PATH&quot;</span><br></pre></td></tr></table></figure>
+<p>###PHP-FPM的加载与启动<br>安装完毕后可以通过以下指令启动和停止php-fpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php-fpm -D</span><br><span class="line">killall php-fpm</span><br></pre></td></tr></table></figure>
+<p>###安装Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></p>
+<p>安装完毕后可以通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br><span class="line">nginx -s quit</span><br></pre></td></tr></table></figure>
+<p>启动和关闭，同时也支持重载配置文件等操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload|reopen|stop|quit</span><br></pre></td></tr></table></figure>
+<p>此时启动了php-fpm并且启动了Nginx后，就可以通过<a href="http://localhost来运行php程序了" target="_blank" rel="noopener">http://localhost来运行php程序了</a></p>
+<p>###安装扩展<br>使用pecl的方式安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install redis</span><br><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install mongodb</span><br><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install memcahced</span><br></pre></td></tr></table></figure>
+<p>安装好后直接使用，不需要配置php.ini文件（已经自动配置好了^_^）。</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-15517573025065" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+    <div class="article-meta">
+      <a href="/2019/03/05/15517573025065/" class="article-date">
+  <time datetime="2019-03-05T03:41:42.507Z" itemprop="datePublished">2019-03-05</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#使用Charles设置https代理到http以及证书安装</p>
+<p>###实现步骤</p>
+<ol>
+<li>下载和安装Charles</li>
+<li>下载和安装电脑的Charles证书，并设置为始终信任，默认是不信任</li>
+<li>从Charles上获取需要在iPhone上安装的 证书网址</li>
+<li>在iPhone上下载和安装证书，最关键一步是要对证书进行 信任 设置</li>
+<li>在Charles上进行 SSL代理设置</li>
+<li>Https转http的代理设置</li>
+<li>在iPhone上设置 HTTP代理</li>
+</ol>
+<p>###具体实现<br>1.下载和安装Charles软件。(具体操作自行百度)</p>
+<p>2.下载和安装电脑的Charles证书，并设置信任，默认是不信任的，具体操作如下图<br><img src="media/15517573025065/15517574058224.jpg" alt=""><br>(图1)<br><img src="media/15517573025065/15517574411275.jpg" alt=""><br>(图2)<br><img src="media/15517573025065/15517574771668.jpg" alt=""><br>(图3)</p>
+<p>3.从Charles上获取需要在iPhone上安装的 证书网址 。点击菜单栏中的Help找到下载证书的网址，如下<br>图<br><img src="media/15517573025065/15517575191922.jpg" alt=""><br>(图4)<br><img src="media/15517573025065/15517575372467.jpg" alt=""><br>(图5)</p>
+<ul>
+<li>提示：要同时下载手机版和电脑版的Charles证书才能使用 Charles 抓取iPhone上的数据接口</li>
+</ul>
+<p>4.在iPhone上下载和安装证书。在浏览器中输入刚才获取的Charles证书的网址，我刚才获取到的是 chls.pro/ssl，不同的版本可能网址不一样。安装证书后可以在手机的 设置 –&gt; 通用 –&gt; 描述文件 里查看刚刚安装的证书。如下图：<br><img src="media/15517573025065/15517575831105.jpg" alt=""><br>(图6)</p>
+<p>5.安装完证书后必须在手机上设置对证书的信任，在抓包时才能正确的获取APP数据接口，否则即使成功安装了也还是获取不到，有很多人写的博客都没有提到这个关键步骤！设置信任方法： 设置 –&gt; 通用 –&gt; 关于本机 –&gt; 证书信任设置。<br><img src="media/15517573025065/15517576205161.jpg" alt=""><br>(图7)</p>
+<p>6.在Charles上进行 SSL代理设置，步骤如下图<br><img src="media/15517573025065/15517576426618.jpg" alt=""><br>(图8)<br><img src="media/15517573025065/15517576499879.jpg" alt=""><br>(图9)<br><img src="media/15517573025065/15517576568715.jpg" alt=""><br>(图10)<br><img src="media/15517573025065/15517576636907.jpg" alt=""><br>(图11)</p>
+<p>7.将线上https代理至本地的http服务器（有需要可添加本步骤）<br><img src="media/15517573025065/15517576820408.jpg" alt=""><br>(图12)<br><img src="media/15517573025065/15517576885514.jpg" alt=""><br>(图13)<br><img src="media/15517573025065/15517576970732.jpg" alt=""><br>(图14)</p>
+<p>8.iPhone上设置代理（太过简单，略）</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-15517566060007" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+    <div class="article-meta">
+      <a href="/2019/03/05/15517566060007/" class="article-date">
+  <time datetime="2019-03-05T03:30:06.001Z" itemprop="datePublished">2019-03-05</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="使用VirtualBox与Windows共享文件夹"><a href="#使用VirtualBox与Windows共享文件夹" class="headerlink" title="使用VirtualBox与Windows共享文件夹"></a>使用VirtualBox与Windows共享文件夹</h1><blockquote>
+<p>因为新公司的环境是在windows下安装的centos的虚拟机，所以项目也用git拉取在linux中，但是使用samba共享服务后，发现每次提交代码非常慢，所以换一种方式共享项目目录。</p>
+</blockquote>
+<p>1.建立共享文件夹,打开VirtualBox,选中虚拟机，依次点击设置-&gt;共享文件夹-&gt;最右边带+的文件夹按钮，在弹出的窗口如下图选择你的文件夹（任意），然后只选择固定分配，点击OK<br><img src="media/15517566060007/15517569667010.jpg" alt=""><br>2.关闭虚拟机客户系统，选中你安装的虚拟机，打开设置。如下图所示，在关闭客户系统的状态下，第二步的按钮此时是点亮的状态，然后选择VBoxGuestAdditions.iso,这个文件在你的VirtualBox安装目录中<br><img src="media/15517566060007/15517569986641.jpg" alt=""><br>3.启动系统，依次执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /mnt/cdrom</span><br><span class="line">sudo mount /dev/cdrom /mnt/cdrom</span><br><span class="line">cd /mnt/cdrom</span><br><span class="line">ls </span><br><span class="line">#此时应该能看见很多文件</span><br><span class="line">sudo ./VBoxLinuxAdditions.run  </span><br><span class="line">#如果提示缺少kernel-devel,执行 sudo yum -y install kernel-devel</span><br><span class="line">sudo mount -t vboxsf www(共享文件夹的名字) /home/www(虚拟机的挂载点)</span><br><span class="line"></span><br><span class="line">#自动挂载</span><br><span class="line">sudo vim/etc/rc.local </span><br><span class="line">mount -t vboxsf www /home/www</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope="" itemprop="blogPost">
   
   <div class="article-inner">
@@ -86,7 +261,7 @@
 			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
   		
   		
-  			<li><a href="https://github.com/hejianxian" target="_blank"><i class="icon icon-github"></i></a></li>
+  			<li><a href="https://github.com/cenuon" target="_blank"><i class="icon icon-github"></i></a></li>
   		
   	</ul>
   </nav>
@@ -112,7 +287,7 @@
   
     <a href="/tags" class="mobile-nav-link">Tag</a>
   
-    <a href="https://github.com/hejianxian" class="mobile-nav-link">Github</a>
+    <a href="https://github.com/cenuon" class="mobile-nav-link">Github</a>
   
 </nav>
     

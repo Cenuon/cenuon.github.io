@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#使用Charles设置https代理到http以及证书安装 ###实现步骤  下载和安装Charles 下载和安装电脑的Charles证书，并设置为始终信任，默认是不信任 从Charles上获取需要在iPhone上安装的 证书网址 在iPhone上下载和安装证书，最关键一步是要对证书进行 信任 设置 在Charles上进行 SSL代理设置 Https转http的代理设置 在iPhone上设置 H">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/15517573025065/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#使用Charles设置https代理到http以及证书安装 ###实现步骤  下载和安装Charles 下载和安装电脑的Charles证书，并设置为始终信任，默认是不信任 从Charles上获取需要在iPhone上安装的 证书网址 在iPhone上下载和安装证书，最关键一步是要对证书进行 信任 设置 在Charles上进行 SSL代理设置 Https转http的代理设置 在iPhone上设置 H">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517574058224.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517574411275.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517574771668.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517575191922.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517575372467.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517575831105.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517576205161.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517576426618.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517576499879.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517576568715.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517576636907.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517576820408.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517576885514.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517576970732.jpg">
+<meta property="og:updated_time" content="2019-03-05T03:49:10.611Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#使用Charles设置https代理到http以及证书安装 ###实现步骤  下载和安装Charles 下载和安装电脑的Charles证书，并设置为始终信任，默认是不信任 从Charles上获取需要在iPhone上安装的 证书网址 在iPhone上下载和安装证书，最关键一步是要对证书进行 信任 设置 在Charles上进行 SSL代理设置 Https转http的代理设置 在iPhone上设置 H">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/05/15517573025065/media/15517573025065/15517574058224.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head></html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <section id="main"><article id="post-15517573025065" class="article article-type-post" itemscope="" itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+    <div class="article-meta">
+      <a href="/2019/03/05/15517573025065/" class="article-date">
+  <time datetime="2019-03-05T03:41:42.507Z" itemprop="datePublished">2019-03-05</time>
+</a>
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#使用Charles设置https代理到http以及证书安装</p>
+<p>###实现步骤</p>
+<ol>
+<li>下载和安装Charles</li>
+<li>下载和安装电脑的Charles证书，并设置为始终信任，默认是不信任</li>
+<li>从Charles上获取需要在iPhone上安装的 证书网址</li>
+<li>在iPhone上下载和安装证书，最关键一步是要对证书进行 信任 设置</li>
+<li>在Charles上进行 SSL代理设置</li>
+<li>Https转http的代理设置</li>
+<li>在iPhone上设置 HTTP代理</li>
+</ol>
+<p>###具体实现<br>1.下载和安装Charles软件。(具体操作自行百度)</p>
+<p>2.下载和安装电脑的Charles证书，并设置信任，默认是不信任的，具体操作如下图<br><img src="media/15517573025065/15517574058224.jpg" alt=""><br>(图1)<br><img src="media/15517573025065/15517574411275.jpg" alt=""><br>(图2)<br><img src="media/15517573025065/15517574771668.jpg" alt=""><br>(图3)</p>
+<p>3.从Charles上获取需要在iPhone上安装的 证书网址 。点击菜单栏中的Help找到下载证书的网址，如下<br>图<br><img src="media/15517573025065/15517575191922.jpg" alt=""><br>(图4)<br><img src="media/15517573025065/15517575372467.jpg" alt=""><br>(图5)</p>
+<ul>
+<li>提示：要同时下载手机版和电脑版的Charles证书才能使用 Charles 抓取iPhone上的数据接口</li>
+</ul>
+<p>4.在iPhone上下载和安装证书。在浏览器中输入刚才获取的Charles证书的网址，我刚才获取到的是 chls.pro/ssl，不同的版本可能网址不一样。安装证书后可以在手机的 设置 –&gt; 通用 –&gt; 描述文件 里查看刚刚安装的证书。如下图：<br><img src="media/15517573025065/15517575831105.jpg" alt=""><br>(图6)</p>
+<p>5.安装完证书后必须在手机上设置对证书的信任，在抓包时才能正确的获取APP数据接口，否则即使成功安装了也还是获取不到，有很多人写的博客都没有提到这个关键步骤！设置信任方法： 设置 –&gt; 通用 –&gt; 关于本机 –&gt; 证书信任设置。<br><img src="media/15517573025065/15517576205161.jpg" alt=""><br>(图7)</p>
+<p>6.在Charles上进行 SSL代理设置，步骤如下图<br><img src="media/15517573025065/15517576426618.jpg" alt=""><br>(图8)<br><img src="media/15517573025065/15517576499879.jpg" alt=""><br>(图9)<br><img src="media/15517573025065/15517576568715.jpg" alt=""><br>(图10)<br><img src="media/15517573025065/15517576636907.jpg" alt=""><br>(图11)</p>
+<p>7.将线上https代理至本地的http服务器（有需要可添加本步骤）<br><img src="media/15517573025065/15517576820408.jpg" alt=""><br>(图12)<br><img src="media/15517573025065/15517576885514.jpg" alt=""><br>(图13)<br><img src="media/15517573025065/15517576970732.jpg" alt=""><br>(图14)</p>
+<p>8.iPhone上设置代理（太过简单，略）</p>
+
+      
+
+      
+        
+    </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/05/15517578100200/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/05/15517566060007/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        <aside id="sidebar">
+  <nav class="menus">
+  	<ul>
+  		<li><a href="/"><i class="icon icon-home"></i></a></li>
+  		
+			<li><a href="/archives"><i class="icon icon-fenlei"></i></a></li>
+  		
+  		
+			<li><a href="/tags"><i class="icon icon-tag"></i></a></li>
+  		
+  		
+  			<li><a href="https://github.com/cenuon" target="_blank"><i class="icon icon-github"></i></a></li>
+  		
+  	</ul>
+  </nav>
+  <a id="go-top" href="#"><i class="icon icon-up"></i></a>
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+	<div id="footer-info" class="inner">
+	  &copy; 2019 John Doe 
+	  - Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	  - Theme <a href="https://github.com/hejianxian/hexo-theme-jane/" target="_blank">Jane</a>
+	</div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tag</a>
+  
+    <a href="https://github.com/cenuon" class="mobile-nav-link">Github</a>
+  
+</nav>
+    
+
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
