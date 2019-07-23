@@ -7,7 +7,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>虚拟机共享本地磁盘 | Hexo</title>
+  <title>Hexo</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -15,20 +15,17 @@
     <meta name="keywords" content="cenuon,后端,php,Hexo主题,后端开发,用户体验,设计,JavaScript,MySQL,Redis,Linux,Swoole,Kafka,MQ">
   
 
-  <meta name="description" content="因为新公司的环境是在windows下安装的centos的虚拟机，所以项目也用git拉取在linux中，但是使用samba共享服务后，发现每次提交代码非常慢，所以换一种方式共享项目目录。  1.建立共享文件夹,打开VirtualBox,选中虚拟机，依次点击设置-&amp;gt;共享文件夹-&amp;gt;最右边带+的文件夹按钮，在弹出的窗口如下图选择你的文件夹（任意），然后只选择固定分配，点击OK2.关闭虚拟机客">
+  <meta name="description" content="title:Mac下安装MNMP(Nginx+PHP7)环境###安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 ###安装PHP7.1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="虚拟机共享本地磁盘">
-<meta property="og:url" content="http://yoursite.com/2019/06/26/15517566060007/index.html">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2019/07/23/15517578100200/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="因为新公司的环境是在windows下安装的centos的虚拟机，所以项目也用git拉取在linux中，但是使用samba共享服务后，发现每次提交代码非常慢，所以换一种方式共享项目目录。  1.建立共享文件夹,打开VirtualBox,选中虚拟机，依次点击设置-&amp;gt;共享文件夹-&amp;gt;最右边带+的文件夹按钮，在弹出的窗口如下图选择你的文件夹（任意），然后只选择固定分配，点击OK2.关闭虚拟机客">
+<meta property="og:description" content="title:Mac下安装MNMP(Nginx+PHP7)环境###安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 ###安装PHP7.1">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/06/26/15517566060007/media/15517566060007/15517569667010.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/06/26/15517566060007/media/15517566060007/15517569986641.jpg">
-<meta property="og:updated_time" content="2019-06-26T08:46:25.978Z">
+<meta property="og:updated_time" content="2019-07-23T06:05:23.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="虚拟机共享本地磁盘">
-<meta name="twitter:description" content="因为新公司的环境是在windows下安装的centos的虚拟机，所以项目也用git拉取在linux中，但是使用samba共享服务后，发现每次提交代码非常慢，所以换一种方式共享项目目录。  1.建立共享文件夹,打开VirtualBox,选中虚拟机，依次点击设置-&amp;gt;共享文件夹-&amp;gt;最右边带+的文件夹按钮，在弹出的窗口如下图选择你的文件夹（任意），然后只选择固定分配，点击OK2.关闭虚拟机客">
-<meta name="twitter:image" content="http://yoursite.com/2019/06/26/15517566060007/media/15517566060007/15517569667010.jpg">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="title:Mac下安装MNMP(Nginx+PHP7)环境###安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 ###安装PHP7.1">
 
   
 
@@ -161,17 +158,22 @@ ga('send', 'pageview');
 </div>
 
 
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-Mac下安装MNMP-Nginx-PHP7-环境"><span class="toc-text">title:Mac下安装MNMP(Nginx+PHP7)环境</span></a></li></ol>
+  </div>
+
 
 
 <div class="content content-post CENTER">
-   <article id="post-15517566060007" class="article article-type-post" itemprop="blogPost">
+   <article id="post-15517578100200" class="article article-type-post" itemprop="blogPost">
   <header class="article-header">
-    <h1 class="post-title">虚拟机共享本地磁盘</h1>
+    <h1 class="post-title">(no title)</h1>
 
     <div class="article-meta">
       <span>
         <i class="icon-calendar"></i>
-        <span>2019.06.26</span>
+        <span>2019.07.23</span>
       </span>
 
       
@@ -199,10 +201,25 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <blockquote>
-<p>因为新公司的环境是在windows下安装的centos的虚拟机，所以项目也用git拉取在linux中，但是使用samba共享服务后，发现每次提交代码非常慢，所以换一种方式共享项目目录。</p>
-</blockquote>
-<p>1.建立共享文件夹,打开VirtualBox,选中虚拟机，依次点击设置-&gt;共享文件夹-&gt;最右边带+的文件夹按钮，在弹出的窗口如下图选择你的文件夹（任意），然后只选择固定分配，点击OK<br><img src="media/15517566060007/15517569667010.jpg" alt=""><br>2.关闭虚拟机客户系统，选中你安装的虚拟机，打开设置。如下图所示，在关闭客户系统的状态下，第二步的按钮此时是点亮的状态，然后选择VBoxGuestAdditions.iso,这个文件在你的VirtualBox安装目录中<br><img src="media/15517566060007/15517569986641.jpg" alt=""><br>3.启动系统，依次执行以下命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir /mnt/cdrom</span><br><span class="line">sudo mount /dev/cdrom /mnt/cdrom</span><br><span class="line">cd /mnt/cdrom</span><br><span class="line">ls </span><br><span class="line">#此时应该能看见很多文件</span><br><span class="line">sudo ./VBoxLinuxAdditions.run  </span><br><span class="line">#如果提示缺少kernel-devel,执行 sudo yum -y install kernel-devel</span><br><span class="line">sudo mount -t vboxsf www(共享文件夹的名字) /home/www(虚拟机的挂载点)</span><br><span class="line"></span><br><span class="line">#自动挂载</span><br><span class="line">sudo vim/etc/rc.local </span><br><span class="line">mount -t vboxsf www /home/www</span><br></pre></td></tr></table></figure></p>
+      <hr>
+<h2 id="title-Mac下安装MNMP-Nginx-PHP7-环境"><a href="#title-Mac下安装MNMP-Nginx-PHP7-环境" class="headerlink" title="title:Mac下安装MNMP(Nginx+PHP7)环境"></a>title:Mac下安装MNMP(Nginx+PHP7)环境</h2><p>###安装Homebrew<br>打开终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>之后就可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ****</span><br></pre></td></tr></table></figure></p>
+<p>来安装所需要的依赖了。</p>
+<p>###安装PHP7.1（FPM方式）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install php@7.1</span><br></pre></td></tr></table></figure>
+<p>由于OSX已经自带了PHP环境，因此需要修改系统路径，优先运行brew安装的版本，在<code>~/.bashrc</code>里加入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;/usr/local/bin:/usr/local/sbin:$PATH&quot;</span><br></pre></td></tr></table></figure>
+<p>###PHP-FPM的加载与启动<br>安装完毕后可以通过以下指令启动和停止php-fpm</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php-fpm -D</span><br><span class="line">killall php-fpm</span><br></pre></td></tr></table></figure>
+<p>###安装Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></p>
+<p>安装完毕后可以通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br><span class="line">nginx -s quit</span><br></pre></td></tr></table></figure>
+<p>启动和关闭，同时也支持重载配置文件等操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload|reopen|stop|quit</span><br></pre></td></tr></table></figure>
+<p>此时启动了php-fpm并且启动了Nginx后，就可以通过<a href="http://localhost来运行php程序了" target="_blank" rel="noopener">http://localhost来运行php程序了</a></p>
+<p>###安装扩展<br>使用pecl的方式安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install redis</span><br><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install mongodb</span><br><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install memcahced</span><br></pre></td></tr></table></figure>
+<p>安装好后直接使用，不需要配置php.ini文件（已经自动配置好了^_^）。</p>
 
     
   </div>
@@ -240,10 +257,10 @@ ga('send', 'pageview');
 
    
   <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2019/03/05/15517581488352/">
+    <a class="show pull-left" href="/2019/06/26/15517566060007/">
         <i class="icon icon-angle-left"></i>
     </a>
-    <a class="show pull-right" href="/2019/07/23/15517578100200/">
+    <a class="hide pull-right" href="/">
         <i class="icon icon-angle-right"></i>
     </a>
   </div>
