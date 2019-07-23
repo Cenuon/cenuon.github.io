@@ -15,17 +15,17 @@
     <meta name="keywords" content="cenuon,后端,php,Hexo主题,后端开发,用户体验,设计,JavaScript,MySQL,Redis,Linux,Swoole,Kafka,MQ">
   
 
-  <meta name="description" content="###安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 ###安装PHP7.1（FPM方式） 1brew install php@7.1 由">
+  <meta name="description" content="安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 安装PHP7.1（FPM方式）1brew install php@7.1 由于OSX已经自">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MAC下搭建PHP开发环境">
 <meta property="og:url" content="http://yoursite.com/2019/07/23/15517578100200/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="###安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 ###安装PHP7.1（FPM方式） 1brew install php@7.1 由">
+<meta property="og:description" content="安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 安装PHP7.1（FPM方式）1brew install php@7.1 由于OSX已经自">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-23T06:10:22.948Z">
+<meta property="og:updated_time" content="2019-07-23T06:15:35.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MAC下搭建PHP开发环境">
-<meta name="twitter:description" content="###安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 ###安装PHP7.1（FPM方式） 1brew install php@7.1 由">
+<meta name="twitter:description" content="安装Homebrew打开终端输入1ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot; 之后就可以使用1brew install **** 来安装所需要的依赖了。 安装PHP7.1（FPM方式）1brew install php@7.1 由于OSX已经自">
 
   
 
@@ -158,6 +158,11 @@ ga('send', 'pageview');
 </div>
 
 
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Homebrew"><span class="toc-text">安装Homebrew</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装PHP7-1（FPM方式）"><span class="toc-text">安装PHP7.1（FPM方式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-FPM的加载与启动"><span class="toc-text">PHP-FPM的加载与启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Nginx"><span class="toc-text">安装Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装扩展"><span class="toc-text">安装扩展</span></a></li></ol>
+  </div>
+
 
 
 <div class="content content-post CENTER">
@@ -196,22 +201,21 @@ ga('send', 'pageview');
 
   <div class="article-content">
     
-      <p>###安装Homebrew<br>打开终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
+      <h3 id="安装Homebrew"><a href="#安装Homebrew" class="headerlink" title="安装Homebrew"></a>安装Homebrew</h3><p>打开终端输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br></pre></td></tr></table></figure></p>
 <p>之后就可以使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install ****</span><br></pre></td></tr></table></figure></p>
 <p>来安装所需要的依赖了。</p>
-<p>###安装PHP7.1（FPM方式）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install php@7.1</span><br></pre></td></tr></table></figure>
+<h3 id="安装PHP7-1（FPM方式）"><a href="#安装PHP7-1（FPM方式）" class="headerlink" title="安装PHP7.1（FPM方式）"></a>安装PHP7.1（FPM方式）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install php@7.1</span><br></pre></td></tr></table></figure>
 <p>由于OSX已经自带了PHP环境，因此需要修改系统路径，优先运行brew安装的版本，在<code>~/.bashrc</code>里加入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;/usr/local/bin:/usr/local/sbin:$PATH&quot;</span><br></pre></td></tr></table></figure>
-<p>###PHP-FPM的加载与启动<br>安装完毕后可以通过以下指令启动和停止php-fpm</p>
+<h3 id="PHP-FPM的加载与启动"><a href="#PHP-FPM的加载与启动" class="headerlink" title="PHP-FPM的加载与启动"></a>PHP-FPM的加载与启动</h3><p>安装完毕后可以通过以下指令启动和停止php-fpm</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php-fpm -D</span><br><span class="line">killall php-fpm</span><br></pre></td></tr></table></figure>
-<p>###安装Nginx<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
 <p>安装完毕后可以通过</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br><span class="line">nginx -s quit</span><br></pre></td></tr></table></figure>
 <p>启动和关闭，同时也支持重载配置文件等操作</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload|reopen|stop|quit</span><br></pre></td></tr></table></figure>
 <p>此时启动了php-fpm并且启动了Nginx后，就可以通过<a href="http://localhost来运行php程序了" target="_blank" rel="noopener">http://localhost来运行php程序了</a></p>
-<p>###安装扩展<br>使用pecl的方式安装</p>
+<h3 id="安装扩展"><a href="#安装扩展" class="headerlink" title="安装扩展"></a>安装扩展</h3><p>使用pecl的方式安装</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install redis</span><br><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install mongodb</span><br><span class="line">/usr/local/Cellar/php\@7.1/7.1.23/pecl install memcahced</span><br></pre></td></tr></table></figure>
 <p>安装好后直接使用，不需要配置php.ini文件（已经自动配置好了^_^）。</p>
 
